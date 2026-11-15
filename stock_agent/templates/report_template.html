@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid #334155;
+        }
+        header h1 {
+            color: #38bdf8;
+            font-size: 2.2rem;
+            margin: 0 0 0.5rem 0;
+        }
+        header p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .meta-banner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            padding: 0.65rem 1.25rem;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        .badge-verified {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(52, 211, 153, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .meta-item strong {
+            color: #f1f5f9;
+        }
+        .table-container {
+            background: #1e293b;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid #334155;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 0.85rem 1.1rem;
+            border-bottom: 1px solid #334155;
+            text-align: left;
+        }
+        th {
+            background: #172033;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+        footer {
+            margin-top: 3rem;
+            padding: 1.25rem 1.5rem;
+            background: #1e293b;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+        footer h4 {
+            margin: 0 0 0.4rem 0;
+            color: #f1f5f9;
+            font-size: 1rem;
+        }
+        footer p {
+            margin: 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{{ title }}</h1>
+            <p>{{ subtitle }}</p>
+            <div class="meta-banner">
+                <span class="badge-verified">&#9679; Verified Market Data</span>
+                <span class="meta-item"><strong>Last Updated:</strong> {{ last_updated }}</span>
+                <span>&bull;</span>
+                <span class="meta-item"><strong>Source:</strong> {{ data_source }}</span>
+                <span>&bull;</span>
+                <span class="meta-item"><strong>Universe:</strong> {{ universe }}</span>
+            </div>
+        </header>
+
+        <main>
+{{ body_content | safe }}
+        </main>
+
+        <footer>
+            <h4>Terms &amp; Disclaimer:</h4>
+            <p>{{ disclaimer | safe }}</p>
+        </footer>
+    </div>
+</body>
+</html>
