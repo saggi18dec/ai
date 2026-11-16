@@ -15,18 +15,12 @@ Set your model and API keys in `stock_agent/.env`:
 STOCKS_MODEL=groq/openai/gpt-oss-120b
 STOCKS_API_KEY=your_api_key_here
 ```
-See `.env.example` for reference.
 
 ## How to Run
-
-### Via Docker Container (`ai`)
-```bash
-docker exec -it -w /var/www/ai/stock_agent ai python3 agent.py
-```
 
 ### Directly on Host
 ```bash
 cd ~/workspace/ai/stock_agent
 pip install -r requirements.txt
-python3 agent.py
+python3 adk run stock_agent.py
 ```
