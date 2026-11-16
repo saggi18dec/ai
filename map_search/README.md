@@ -17,7 +17,6 @@ Set your Google Maps API key in `map_search/.env`:
 ```bash
 GOOGLE_MAPS_API_KEY=your_api_key_here
 ```
-See `.env.example` for reference.
 
 ## How to Run
 
