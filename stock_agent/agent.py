@@ -9,17 +9,32 @@ from stock_agent.tools.stock_tools import (
     calculate_momentum_tool,
 )
 
-# Load environment variables
-load_dotenv()
+# -----------------------------------------------------------------------------
+# 1. Environment & Configuration
+# -----------------------------------------------------------------------------
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(SCRIPT_DIR, ".env"))
 
-# ----------------------------------------------------------------------
-# 1. LLM Configuration for CrewAI
-# ----------------------------------------------------------------------
+# Retrieve endpoint configurations from .env
+docker_url = os.getenv("DOCKER_BASE_URL")
+local_url = os.getenv("LOCAL_BASE_URL")
+base_url = docker_url if os.path.exists("/.dockerenv") else local_url
+
+MODEL = os.getenv("STOCKS_MODEL")
+API_KEY = os.getenv("STOCKS_API_KEY")
+
+# -----------------------------------------------------------------------------
+# 2. LLM Configuration for CrewAI
+# -----------------------------------------------------------------------------
 # CrewAI uses LiteLLM syntax
-stocks_llm = LLM(
-    model=os.getenv("STOCKS_MODEL"),
-    api_key=os.getenv("STOCKS_API_KEY"),
-)
+llm_kwargs = {
+    "model": MODEL,
+    "api_key": API_KEY,
+}
+if base_url:
+    llm_kwargs["base_url"] = base_url
+
+stocks_llm = LLM(**llm_kwargs)
 
 # ----------------------------------------------------------------------
 # 2. CrewAI Sub-Agents
