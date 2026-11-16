@@ -20,7 +20,7 @@ STOCKS_API_KEY=your_api_key_here
 
 ### Directly on Host
 ```bash
-cd ~/workspace/ai/stock_agent
+cd ai
 pip install -r requirements.txt
-python3 adk run stock_agent.py
+adk run stock_agent.py
 ```
