@@ -1,0 +1,14 @@
+*$py.class
+*.csv
+*.log
+*.py[cod]
+*.so
+.adk/
+.env
+.idea/
+.venv/
+.vscode/
+env/
+ENV/
+venv/
+__pycache__/
