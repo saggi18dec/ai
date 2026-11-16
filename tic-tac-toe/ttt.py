@@ -16,10 +16,11 @@ local_url = os.getenv("LOCAL_BASE_URL")
 base_url = docker_url if os.path.exists("/.dockerenv") else local_url
 
 MODEL = os.getenv("MODEL")
+API_KEY = os.getenv("API_KEY")
 
 client = openai.OpenAI(
     base_url=base_url,
-    api_key=os.getenv("API_KEY"),
+    api_key=API_KEY,
 )
 
 def load_skill_file(filename="tic_tac_toe_skill.md"):
